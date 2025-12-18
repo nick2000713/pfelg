@@ -11,7 +11,7 @@ Inspired by [pfelk](https://github.com/pfelk/pfelk) but simplified: **no custom 
 
 - Firewall log parsing (block/pass events)
 - GeoIP enrichment with map visualization
-- Minimal RAM footprint (~1.5 GB total)
+- Minimal RAM footprint
 - Automatic data retention via ILM
 - ECS-compliant field structure
 
