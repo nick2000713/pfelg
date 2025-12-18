@@ -1,0 +1,2345 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2beta1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "01fca75c-a804-4f98-bb95-38a76e92c822",
+    "generation": 6,
+    "creationTimestamp": "2025-06-09T19:05:02Z",
+    "labels": {},
+    "annotations": {}
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "builtIn": true,
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "query": {
+            "group": "grafana",
+            "kind": "DataQuery",
+            "spec": {},
+            "version": "v0"
+          }
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "description": "OPNsense/pfsense Firewall",
+    "editable": true,
+    "elements": {
+      "panel-12": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:54",
+                            "fake": true,
+                            "field": "destination.geo.country_name",
+                            "id": "4",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "10"
+                            },
+                            "type": "terms"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:52",
+                            "field": "even",
+                            "id": "1",
+                            "meta": {},
+                            "settings": {},
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 12,
+          "links": [],
+          "title": "Country Destination Tags",
+          "vizConfig": {
+            "group": "magnesium-wordcloud-panel",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "series_index": 0,
+                "wordCloudOptions": {
+                  "deterministic": true,
+                  "enableTooltip": true,
+                  "fontFamily": "arial",
+                  "fontSizes": [
+                    15,
+                    80
+                  ],
+                  "padding": 1,
+                  "rotationAngles": [
+                    0,
+                    0
+                  ],
+                  "rotations": 2,
+                  "scale": "sqrt",
+                  "spiral": "archimedean",
+                  "transitionDuration": 800
+                }
+              }
+            },
+            "version": "1.2.4"
+          }
+        }
+      },
+      "panel-22": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:710",
+                            "fake": true,
+                            "field": "event.action",
+                            "id": "5",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_term",
+                              "size": "5"
+                            },
+                            "type": "terms"
+                          },
+                          {
+                            "$$hashKey": "object:600",
+                            "fake": true,
+                            "field": "@timestamp",
+                            "id": "3",
+                            "settings": {
+                              "interval": "30s",
+                              "min_doc_count": 0,
+                              "trimEdges": 0
+                            },
+                            "type": "date_histogram"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:701",
+                            "field": "select field",
+                            "id": "4",
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 22,
+          "links": [],
+          "title": "Event Type Over Time",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 10,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "string"
+                },
+                "overrides": []
+              },
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "right",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-23": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:862",
+                            "fake": true,
+                            "field": "event.action",
+                            "id": "6",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "5"
+                            },
+                            "type": "terms"
+                          },
+                          {
+                            "$$hashKey": "object:76",
+                            "fake": true,
+                            "field": "interface.name",
+                            "id": "7",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "5"
+                            },
+                            "type": "terms"
+                          },
+                          {
+                            "$$hashKey": "object:710",
+                            "fake": true,
+                            "field": "@timestamp",
+                            "id": "5",
+                            "settings": {
+                              "interval": "auto",
+                              "min_doc_count": 0,
+                              "trimEdges": 0
+                            },
+                            "type": "date_histogram"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:701",
+                            "field": "select field",
+                            "id": "4",
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 23,
+          "links": [],
+          "title": "Events by Interface",
+          "vizConfig": {
+            "group": "piechart",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    }
+                  },
+                  "decimals": 0,
+                  "unit": "short"
+                },
+                "overrides": []
+              },
+              "options": {
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true,
+                  "values": []
+                },
+                "pieType": "donut",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "sort": "desc",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-24": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:1395",
+                            "fake": true,
+                            "field": "event.action",
+                            "id": "6",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "10"
+                            },
+                            "type": "terms"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:518",
+                            "field": "event.action.keyword",
+                            "id": "1",
+                            "meta": {},
+                            "settings": {},
+                            "type": "count"
+                          }
+                        ],
+                        "query": "event.action:pass",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 24,
+          "links": [],
+          "title": "PASS - Firewall events",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "last"
+                  ],
+                  "fields": "/.*/",
+                  "values": true
+                },
+                "showPercentChange": false,
+                "textMode": "value",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-25": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:1395",
+                            "fake": true,
+                            "field": "event.action",
+                            "id": "6",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "10"
+                            },
+                            "type": "terms"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:518",
+                            "field": "event.action.keyword",
+                            "id": "1",
+                            "meta": {},
+                            "settings": {},
+                            "type": "count"
+                          }
+                        ],
+                        "query": "event.action:block",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 25,
+          "links": [],
+          "title": "BLOCK - Firewall events",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "last"
+                  ],
+                  "fields": "/.*/",
+                  "values": true
+                },
+                "showPercentChange": false,
+                "textMode": "value",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-27": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:3255",
+                            "field": "destination.geo.location",
+                            "id": "2",
+                            "settings": {
+                              "precision": 3
+                            },
+                            "type": "geohash_grid"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:3135",
+                            "field": "select field",
+                            "id": "1",
+                            "meta": {},
+                            "settings": {},
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 1
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 27,
+          "links": [],
+          "title": "Map - Destination",
+          "vizConfig": {
+            "group": "geomap",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#56A64B",
+                        "value": 0
+                      },
+                      {
+                        "color": "#F2CC0C",
+                        "value": 100
+                      },
+                      {
+                        "color": "#FF780A",
+                        "value": 200
+                      },
+                      {
+                        "color": "#E02F44",
+                        "value": 500
+                      },
+                      {
+                        "color": "#C4162A",
+                        "value": 1000
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "basemap": {
+                  "name": "Basemap",
+                  "noRepeat": false,
+                  "type": "default"
+                },
+                "controls": {
+                  "mouseWheelZoom": true,
+                  "showAttribution": false,
+                  "showDebug": false,
+                  "showMeasure": false,
+                  "showScale": false,
+                  "showZoom": false
+                },
+                "layers": [
+                  {
+                    "config": {
+                      "showLegend": false,
+                      "style": {
+                        "color": {
+                          "field": "Count",
+                          "fixed": "dark-green"
+                        },
+                        "opacity": 0.7,
+                        "rotation": {
+                          "fixed": 0,
+                          "max": 360,
+                          "min": -360,
+                          "mode": "mod"
+                        },
+                        "size": {
+                          "field": "Count",
+                          "fixed": 5,
+                          "max": 15,
+                          "min": 2
+                        },
+                        "symbol": {
+                          "fixed": "img/icons/marker/circle.svg",
+                          "mode": "fixed"
+                        },
+                        "symbolAlign": {
+                          "horizontal": "center",
+                          "vertical": "center"
+                        },
+                        "textConfig": {
+                          "fontSize": 12,
+                          "offsetX": 0,
+                          "offsetY": 0,
+                          "textAlign": "center",
+                          "textBaseline": "middle"
+                        }
+                      }
+                    },
+                    "filterData": {
+                      "id": "byRefId",
+                      "options": "A"
+                    },
+                    "location": {
+                      "geohash": "destination.geo.location",
+                      "mode": "geohash"
+                    },
+                    "name": "Layer 0",
+                    "tooltip": false,
+                    "type": "markers"
+                  }
+                ],
+                "tooltip": {
+                  "mode": "details"
+                },
+                "view": {
+                  "allLayers": true,
+                  "id": "europe",
+                  "lat": 46,
+                  "lon": 14,
+                  "noRepeat": false,
+                  "shared": true,
+                  "zoom": 1
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-28": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:3255",
+                            "field": "source.geo.location",
+                            "id": "2",
+                            "settings": {
+                              "precision": 3
+                            },
+                            "type": "geohash_grid"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:3135",
+                            "field": "select field",
+                            "id": "1",
+                            "meta": {},
+                            "settings": {},
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 1
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 28,
+          "links": [],
+          "title": "Map - Source",
+          "vizConfig": {
+            "group": "geomap",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#56A64B",
+                        "value": 0
+                      },
+                      {
+                        "color": "#F2CC0C",
+                        "value": 100
+                      },
+                      {
+                        "color": "#FF780A",
+                        "value": 200
+                      },
+                      {
+                        "color": "#E02F44",
+                        "value": 500
+                      },
+                      {
+                        "color": "#C4162A",
+                        "value": 1000
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "basemap": {
+                  "name": "Basemap",
+                  "noRepeat": false,
+                  "type": "default"
+                },
+                "controls": {
+                  "mouseWheelZoom": true,
+                  "showAttribution": false,
+                  "showDebug": false,
+                  "showMeasure": false,
+                  "showScale": false,
+                  "showZoom": false
+                },
+                "layers": [
+                  {
+                    "config": {
+                      "showLegend": false,
+                      "style": {
+                        "color": {
+                          "field": "Count",
+                          "fixed": "dark-green"
+                        },
+                        "opacity": 0.7,
+                        "rotation": {
+                          "fixed": 0,
+                          "max": 360,
+                          "min": -360,
+                          "mode": "mod"
+                        },
+                        "size": {
+                          "field": "Count",
+                          "fixed": 5,
+                          "max": 15,
+                          "min": 2
+                        },
+                        "symbol": {
+                          "fixed": "img/icons/marker/circle.svg",
+                          "mode": "fixed"
+                        },
+                        "symbolAlign": {
+                          "horizontal": "center",
+                          "vertical": "center"
+                        },
+                        "textConfig": {
+                          "fontSize": 12,
+                          "offsetX": 0,
+                          "offsetY": 0,
+                          "textAlign": "center",
+                          "textBaseline": "middle"
+                        }
+                      }
+                    },
+                    "filterData": {
+                      "id": "byRefId",
+                      "options": "A"
+                    },
+                    "location": {
+                      "geohash": "source.geo.location",
+                      "mode": "geohash"
+                    },
+                    "name": "Layer 0",
+                    "tooltip": false,
+                    "type": "markers"
+                  }
+                ],
+                "tooltip": {
+                  "mode": "details"
+                },
+                "view": {
+                  "allLayers": true,
+                  "id": "europe",
+                  "lat": 46,
+                  "lon": 14,
+                  "noRepeat": false,
+                  "zoom": 1
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-29": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:54",
+                            "fake": true,
+                            "field": "source.geo.country_name",
+                            "id": "4",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "10"
+                            },
+                            "type": "terms"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:52",
+                            "field": "even",
+                            "id": "1",
+                            "meta": {},
+                            "settings": {},
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 29,
+          "links": [],
+          "title": "Country Source Tags",
+          "vizConfig": {
+            "group": "magnesium-wordcloud-panel",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "series_index": 0,
+                "wordCloudOptions": {
+                  "deterministic": true,
+                  "enableTooltip": true,
+                  "fontFamily": "arial",
+                  "fontSizes": [
+                    15,
+                    80
+                  ],
+                  "padding": 1,
+                  "rotationAngles": [
+                    0,
+                    0
+                  ],
+                  "rotations": 2,
+                  "scale": "sqrt",
+                  "spiral": "archimedean",
+                  "transitionDuration": 800
+                }
+              }
+            },
+            "version": "1.2.4"
+          }
+        }
+      },
+      "panel-30": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:7864",
+                            "field": "@timestamp",
+                            "id": "2",
+                            "settings": {
+                              "interval": "auto",
+                              "min_doc_count": 0,
+                              "trimEdges": 0
+                            },
+                            "type": "date_histogram"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:7862",
+                            "field": "select metric",
+                            "id": "1",
+                            "meta": {},
+                            "pipelineAgg": "select metric",
+                            "pipelineVariables": [
+                              {
+                                "name": "var1",
+                                "pipelineAgg": "select metric"
+                              }
+                            ],
+                            "settings": {},
+                            "type": "logs"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "filterFieldsByName",
+                  "spec": {
+                    "id": "filterFieldsByName",
+                    "options": {
+                      "include": {
+                        "names": [
+                          "@timestamp",
+                          "observer.name",
+                          "network.name",
+                          "destination.ip",
+                          "destination.port",
+                          "source.ip",
+                          "source.port",
+                          "event.action"
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {},
+                      "indexByName": {
+                        "@timestamp": 0,
+                        "destination.ip": 3,
+                        "destination.port": 4,
+                        "event.action": 7,
+                        "network.name": 2,
+                        "observer.name": 1,
+                        "source.ip": 5,
+                        "source.port": 6
+                      },
+                      "renameByName": {}
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 30,
+          "links": [],
+          "title": "Discover",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "color-text"
+                    },
+                    "filterable": false,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": false,
+                    "displayName": "alert.category"
+                  }
+                ]
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-31": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:862",
+                            "fake": true,
+                            "field": "network.transport",
+                            "id": "6",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "10"
+                            },
+                            "type": "terms"
+                          },
+                          {
+                            "$$hashKey": "object:710",
+                            "fake": true,
+                            "field": "@timestamp",
+                            "id": "5",
+                            "settings": {
+                              "interval": "auto",
+                              "min_doc_count": 0,
+                              "trimEdges": 0
+                            },
+                            "type": "date_histogram"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:701",
+                            "field": "select field",
+                            "id": "4",
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 31,
+          "links": [],
+          "title": "Network Transport Type",
+          "vizConfig": {
+            "group": "piechart",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    }
+                  },
+                  "decimals": 0,
+                  "unit": "short"
+                },
+                "overrides": []
+              },
+              "options": {
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "table",
+                  "placement": "bottom",
+                  "showLegend": true,
+                  "values": []
+                },
+                "pieType": "donut",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "sort": "desc",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-32": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:862",
+                            "fake": true,
+                            "field": "interface.name",
+                            "id": "6",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "5"
+                            },
+                            "type": "terms"
+                          },
+                          {
+                            "$$hashKey": "object:710",
+                            "fake": true,
+                            "field": "@timestamp",
+                            "id": "5",
+                            "settings": {
+                              "interval": "auto",
+                              "min_doc_count": 0,
+                              "trimEdges": 0
+                            },
+                            "type": "date_histogram"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:701",
+                            "field": "select field",
+                            "id": "4",
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 32,
+          "links": [],
+          "title": "Events by Interface",
+          "vizConfig": {
+            "group": "piechart",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    }
+                  },
+                  "decimals": 0,
+                  "unit": "short"
+                },
+                "overrides": []
+              },
+              "options": {
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "table",
+                  "placement": "bottom",
+                  "showLegend": true,
+                  "values": []
+                },
+                "pieType": "donut",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "sort": "desc",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-33": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:710",
+                            "fake": true,
+                            "field": "destination.geo.country_name",
+                            "id": "5",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "20"
+                            },
+                            "type": "terms"
+                          },
+                          {
+                            "$$hashKey": "object:600",
+                            "fake": true,
+                            "field": "@timestamp",
+                            "id": "3",
+                            "settings": {
+                              "interval": "30s",
+                              "min_doc_count": 0,
+                              "trimEdges": 0
+                            },
+                            "type": "date_histogram"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:701",
+                            "field": "select field",
+                            "id": "4",
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 33,
+          "links": [],
+          "title": "Country Destination/Time",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "normal"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "string"
+                },
+                "overrides": []
+              },
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "right",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-34": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:710",
+                            "fake": true,
+                            "field": "source.geo.country_name",
+                            "id": "5",
+                            "settings": {
+                              "min_doc_count": "1",
+                              "order": "desc",
+                              "orderBy": "_count",
+                              "size": "20"
+                            },
+                            "type": "terms"
+                          },
+                          {
+                            "$$hashKey": "object:600",
+                            "fake": true,
+                            "field": "@timestamp",
+                            "id": "3",
+                            "settings": {
+                              "interval": "30s",
+                              "min_doc_count": 0,
+                              "trimEdges": 0
+                            },
+                            "type": "date_histogram"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:701",
+                            "field": "select field",
+                            "id": "4",
+                            "type": "count"
+                          }
+                        ],
+                        "query": "",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 3
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 34,
+          "links": [],
+          "title": "Country Source/Time",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "normal"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "string"
+                },
+                "overrides": []
+              },
+              "options": {
+                "alertThreshold": true,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "right",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-36": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:3255",
+                            "field": "source.geo.location",
+                            "id": "2",
+                            "settings": {
+                              "precision": 3
+                            },
+                            "type": "geohash_grid"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:3135",
+                            "field": "select field",
+                            "id": "1",
+                            "meta": {},
+                            "settings": {},
+                            "type": "count"
+                          }
+                        ],
+                        "query": "event.action:pass",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 1
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 36,
+          "links": [],
+          "title": "Map - Source-Allowed-in",
+          "vizConfig": {
+            "group": "geomap",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#56A64B",
+                        "value": 0
+                      },
+                      {
+                        "color": "#F2CC0C",
+                        "value": 1000
+                      },
+                      {
+                        "color": "#FF780A",
+                        "value": 2000
+                      },
+                      {
+                        "color": "#E02F44",
+                        "value": 50000
+                      },
+                      {
+                        "color": "#C4162A",
+                        "value": 100000
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "basemap": {
+                  "name": "Basemap",
+                  "noRepeat": false,
+                  "type": "default"
+                },
+                "controls": {
+                  "mouseWheelZoom": true,
+                  "showAttribution": false,
+                  "showDebug": false,
+                  "showMeasure": false,
+                  "showScale": false,
+                  "showZoom": false
+                },
+                "layers": [
+                  {
+                    "config": {
+                      "showLegend": false,
+                      "style": {
+                        "color": {
+                          "field": "Count",
+                          "fixed": "dark-green"
+                        },
+                        "opacity": 0.7,
+                        "rotation": {
+                          "fixed": 0,
+                          "max": 360,
+                          "min": -360,
+                          "mode": "mod"
+                        },
+                        "size": {
+                          "field": "Count",
+                          "fixed": 5,
+                          "max": 8,
+                          "min": 2
+                        },
+                        "symbol": {
+                          "fixed": "img/icons/marker/circle.svg",
+                          "mode": "fixed"
+                        },
+                        "symbolAlign": {
+                          "horizontal": "center",
+                          "vertical": "center"
+                        },
+                        "textConfig": {
+                          "fontSize": 12,
+                          "offsetX": 0,
+                          "offsetY": 0,
+                          "textAlign": "center",
+                          "textBaseline": "middle"
+                        }
+                      }
+                    },
+                    "filterData": {
+                      "id": "byRefId",
+                      "options": "A"
+                    },
+                    "location": {
+                      "geohash": "source.geo.location",
+                      "mode": "geohash"
+                    },
+                    "name": "Layer 0",
+                    "tooltip": false,
+                    "type": "markers"
+                  }
+                ],
+                "tooltip": {
+                  "mode": "details"
+                },
+                "view": {
+                  "allLayers": true,
+                  "id": "europe",
+                  "lat": 46,
+                  "lon": 14,
+                  "noRepeat": false,
+                  "zoom": 1
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-37": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "elasticsearch",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "bucketAggs": [
+                          {
+                            "$$hashKey": "object:3255",
+                            "field": "source.geo.location",
+                            "id": "2",
+                            "settings": {
+                              "precision": 3
+                            },
+                            "type": "geohash_grid"
+                          }
+                        ],
+                        "metrics": [
+                          {
+                            "$$hashKey": "object:3135",
+                            "field": "select field",
+                            "id": "1",
+                            "meta": {},
+                            "settings": {},
+                            "type": "count"
+                          }
+                        ],
+                        "query": "event.action:pass AND destination.port:32400",
+                        "timeField": "@timestamp"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 1
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 37,
+          "links": [],
+          "title": "Map - Source Allowed in on port 32400",
+          "vizConfig": {
+            "group": "geomap",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#56A64B",
+                        "value": 0
+                      },
+                      {
+                        "color": "#F2CC0C",
+                        "value": 100
+                      },
+                      {
+                        "color": "#FF780A",
+                        "value": 200
+                      },
+                      {
+                        "color": "#E02F44",
+                        "value": 500
+                      },
+                      {
+                        "color": "#C4162A",
+                        "value": 1000
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "basemap": {
+                  "name": "Basemap",
+                  "noRepeat": false,
+                  "type": "default"
+                },
+                "controls": {
+                  "mouseWheelZoom": true,
+                  "showAttribution": false,
+                  "showDebug": false,
+                  "showMeasure": false,
+                  "showScale": false,
+                  "showZoom": false
+                },
+                "layers": [
+                  {
+                    "config": {
+                      "showLegend": false,
+                      "style": {
+                        "color": {
+                          "fixed": "dark-green"
+                        },
+                        "opacity": 1,
+                        "rotation": {
+                          "fixed": 0,
+                          "max": 360,
+                          "min": -360,
+                          "mode": "mod"
+                        },
+                        "size": {
+                          "field": "Count",
+                          "fixed": 5,
+                          "max": 3,
+                          "min": 1
+                        },
+                        "symbol": {
+                          "fixed": "img/icons/marker/circle.svg",
+                          "mode": "fixed"
+                        },
+                        "symbolAlign": {
+                          "horizontal": "center",
+                          "vertical": "center"
+                        },
+                        "textConfig": {
+                          "fontSize": 12,
+                          "offsetX": 0,
+                          "offsetY": 0,
+                          "textAlign": "center",
+                          "textBaseline": "middle"
+                        }
+                      }
+                    },
+                    "filterData": {
+                      "id": "byRefId",
+                      "options": "A"
+                    },
+                    "location": {
+                      "geohash": "source.geo.location",
+                      "mode": "geohash"
+                    },
+                    "name": "Layer 0",
+                    "tooltip": false,
+                    "type": "markers"
+                  }
+                ],
+                "tooltip": {
+                  "mode": "details"
+                },
+                "view": {
+                  "allLayers": true,
+                  "id": "europe",
+                  "lat": 46,
+                  "lon": 14,
+                  "noRepeat": false,
+                  "zoom": 4
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-24"
+              },
+              "height": 5,
+              "width": 6,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-22"
+              },
+              "height": 5,
+              "width": 12,
+              "x": 6,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-25"
+              },
+              "height": 5,
+              "width": 6,
+              "x": 18,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-27"
+              },
+              "height": 15,
+              "width": 12,
+              "x": 0,
+              "y": 5
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-28"
+              },
+              "height": 15,
+              "width": 12,
+              "x": 12,
+              "y": 5
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-37"
+              },
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 20
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-23"
+              },
+              "height": 16,
+              "width": 4,
+              "x": 10,
+              "y": 20
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-36"
+              },
+              "height": 10,
+              "width": 10,
+              "x": 14,
+              "y": 20
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-29"
+              },
+              "height": 6,
+              "width": 10,
+              "x": 0,
+              "y": 30
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-12"
+              },
+              "height": 6,
+              "width": 10,
+              "x": 14,
+              "y": 30
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-31"
+              },
+              "height": 14,
+              "width": 6,
+              "x": 0,
+              "y": 36
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-30"
+              },
+              "height": 14,
+              "width": 12,
+              "x": 6,
+              "y": 36
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-32"
+              },
+              "height": 14,
+              "width": 6,
+              "x": 18,
+              "y": 36
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-33"
+              },
+              "height": 16,
+              "width": 12,
+              "x": 0,
+              "y": 50
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-34"
+              },
+              "height": 16,
+              "width": 12,
+              "x": 12,
+              "y": 50
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "fiscalYearStartMonth": 0,
+      "from": "now-15m",
+      "hideTimepicker": false,
+      "timezone": "",
+      "to": "now"
+    },
+    "title": "OPNsense/pfsense Firewall Dashboard",
+    "variables": [
+      {
+        "kind": "DatasourceVariable",
+        "spec": {
+          "allowCustomValue": true,
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "hide": "dontHide",
+          "includeAll": false,
+          "multi": false,
+          "name": "Elasticsearch",
+          "options": [],
+          "pluginId": "elasticsearch",
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "skipUrlSync": false
+        }
+      }
+    ]
+  },
+  "status": {}
+}
