@@ -61,6 +61,7 @@ Just import the JSON-file from `dashboard/`
 
 Copy all files from this repository to the corresponding directories. Download MaxMind databases and place them in the `maxmind/` folder.
 
+> ⚠️ **IMPORTANT:** Ensure all directories have read/write permissions. Both Elasticsearch and Logstash will fail to start without proper permissions.
 
 ### 2. Elasticsearch
 
