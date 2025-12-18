@@ -1,6 +1,6 @@
 # pfelg
 
-PNsense/pfSense firewall log analysis with GeoIP visualization for Grafana.
+OPNsense/pfSense firewall log analysis with GeoIP visualization for Grafana.
 
 Inspired by [pfelk](https://github.com/pfelk/pfelk) but simplified: **no custom scripts, just the official Elasticsearch and Logstash Docker images** with configuration files.
 
