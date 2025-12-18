@@ -27,6 +27,11 @@ OPNsense ──── Syslog (RFC5424, UDP 5140) ────► Logstash ──
 - Docker
 - MaxMind GeoLite2 databases (free account at [maxmind.com](https://www.maxmind.com/en/geolite2/signup))
 
+## Dashboard Preview
+
+![Overview](img/Grafana01.png)
+![Details](img/Grafana02.png)
+
 ## Installation
 
 ### 1. Directory Structure
