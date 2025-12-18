@@ -555,7 +555,7 @@ curl -X PUT "http://localhost:9200/_index_template/pfelg" -H 'Content-Type: appl
 | Version | 8.0+ |
 
 
-In Grafana: **Dashboards → Import → Upload JSON file**
+In Grafana: **Dashboards → Import → Upload JSON file** or go to [grafana.com](https://grafana.com/grafana/dashboards/24578-opnsense-pfsense-firewall-dashboard/) and copy the id
 
 ## Available Fields
 
