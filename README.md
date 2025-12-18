@@ -85,10 +85,10 @@ docker run -d \
   --link pfelg-elasticsearch:elasticsearch \
   -p 5140:5140/udp \
   -p 5140:5140/tcp \
-  -v /your/path/pfelg/logstash/pipeline:/usr/share/logstash/pipeline:ro \
-  -v /your/path/pfelg/logstash/patterns:/usr/share/logstash/patterns:ro \
-  -v /your/path/pfelg/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro \
-  -v /your/path/pfelg/maxmind:/usr/share/logstash/maxmind:ro \
+  -v /your/path/pfelg/logstash/pipeline:/usr/share/logstash/pipeline \
+  -v /your/path/pfelg/logstash/patterns:/usr/share/logstash/patterns \
+  -v /your/path/pfelg/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml \
+  -v /your/path/pfelg/maxmind:/usr/share/logstash/maxmind \
   -e "LS_JAVA_OPTS=-Xms256m -Xmx256m" \
   -e "XPACK_MONITORING_ENABLED=false" \
   docker.elastic.co/logstash/logstash:8.17.0
