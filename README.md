@@ -32,6 +32,8 @@ OPNsense ──── Syslog (RFC5424, UDP 5140) ────► Logstash ──
 ![Overview](img/Grafana01.png)
 ![Details](img/Grafana02.png)
 
+Just import the JSON-file from `dashboard/`
+
 ## Installation
 
 ### 1. Directory Structure
