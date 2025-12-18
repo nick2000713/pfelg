@@ -90,18 +90,16 @@ docker run -d \
 ### 4. ILM Policy
 
 
-####
- Konzept
+#### Konzept
 
 ```
-
 ┌─────────┐    ┌─────────┐    ┌─────────┐
 │   HOT   │ →  │  WARM   │ →  │  COLD   │ →  (optional: DELETE)
 │  0-24h  │    │  1-7d   │    │   7d+   │
 │  fast   │    │ Compress│    │  Archiv │
 └─────────┘    └─────────┘    └─────────┘
-
 ```
+
 Choose a retention policy or change it:
 
 **Keep forever (cold storage after 7 days):**
@@ -138,7 +136,7 @@ curl -X PUT "http://localhost:9200/_ilm/policy/pfelk-forever?pretty" \
 
 **Delete after 7 days:**
 ```bash
-curl -X PUT "http://localhost:9200/_ilm/policy/pfelk-30days?pretty" \
+curl -X PUT "http://localhost:9200/_ilm/policy/pfelk-7days?pretty" \
     -H 'Content-Type: application/json' -d '
 {
   "policy": {
@@ -170,7 +168,7 @@ curl -X PUT "http://localhost:9200/_ilm/policy/pfelk-30days?pretty" \
 
 ### 5. Index Template
 
-Replace `POLICY_NAME` with your chosen policy (`pfelg-forever` or `pfelg-7days`):
+Replace `POLICY_NAME` with your chosen policy (`pfelk-forever` or `pfelk-7days`):
 
 ```bash
 curl -X PUT "http://localhost:9200/_index_template/pfelg" -H 'Content-Type: application/json' -d '
@@ -315,7 +313,58 @@ docker logs pfelg-logstash --tail 50
 | ES: 256 MB / LS: 256 MB | ~1.5 GB |
 | ES: 512 MB / LS: 512 MB | ~2.5 GB |
 
+## Unraid User Scripts
 
-##🙏 Credits
+Manual cleanup scripts for Unraid. Add via **Settings → User Scripts → Add New Script**.
 
-Based of [pfELK Projekt](https://github.com/pfelk/pfelk)von pfelk.
+### Delete indices older than X days
+
+```bash
+#!/bin/bash
+# CONFIGURATION - adjust as needed:
+DAYS_TO_KEEP=30
+
+ES_HOST="http://localhost:9200"
+
+echo "Deleting indices older than ${DAYS_TO_KEEP} days..."
+
+for INDEX in $(curl -s "${ES_HOST}/_cat/indices/pfelk-*?h=index" 2>/dev/null); do
+    INDEX_DATE=$(echo "$INDEX" | grep -oE '[0-9]{4}\.[0-9]{2}\.[0-9]{2}$')
+    
+    if [ -z "$INDEX_DATE" ]; then
+        continue
+    fi
+    
+    INDEX_EPOCH=$(date -d "${INDEX_DATE//./-}" +%s 2>/dev/null)
+    CUTOFF_EPOCH=$(date -d "${DAYS_TO_KEEP} days ago" +%s)
+    
+    if [ "$INDEX_EPOCH" -lt "$CUTOFF_EPOCH" ]; then
+        echo "Deleting: $INDEX"
+        curl -s -X DELETE "${ES_HOST}/${INDEX}"
+    fi
+done
+
+echo ""
+echo "Remaining indices:"
+curl -s "${ES_HOST}/_cat/indices/pfelk-*?v&h=index,docs.count,store.size"
+```
+
+### Delete all indices
+
+```bash
+#!/bin/bash
+ES_HOST="http://localhost:9200"
+
+echo "Deleting ALL pfelk indices..."
+
+for INDEX in $(curl -s "${ES_HOST}/_cat/indices/pfelk-*?h=index" 2>/dev/null); do
+    echo "Deleting: $INDEX"
+    curl -s -X DELETE "${ES_HOST}/${INDEX}"
+done
+
+echo "Done!"
+```
+
+## 🙏 Credits
+
+Based on [pfELK Project](https://github.com/pfelk/pfelk) by pfelk.
