@@ -30,7 +30,7 @@ OPNsense ──── Syslog (RFC5424, UDP 5140) ────► Logstash ──
 ## Dashboard Preview
 
 ![Overview](img/Grafana01.png)
-![Details](img/Grafana02.png)
+![Details](img/Grafana03.png)
 
 Just import the JSON-file from `dashboard/`
 
@@ -541,7 +541,15 @@ curl -X PUT "http://localhost:9200/_index_template/pfelg" -H 'Content-Type: appl
 |---------|-------|
 | Type | Elasticsearch |
 | URL | `http://YOUR_HOST:9200` |
-| Index name | `pfelk-*` |
+| Index name | `pfelk-firewall*` |
+| Time field | `@timestamp` |
+| Version | 8.0+ |
+
+| Setting | Value |
+|---------|-------|
+| Type | Elasticsearch |
+| URL | `http://YOUR_HOST:9200` |
+| Index name | `pfelk-dhcp*` |
 | Time field | `@timestamp` |
 | Version | 8.0+ |
 
