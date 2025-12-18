@@ -98,7 +98,7 @@ docker run -d \
 ### 4. ILM Policy
 
 
-#### Konzept
+#### Concept
 
 ```
 ┌─────────┐    ┌─────────┐    ┌─────────┐
@@ -553,6 +553,9 @@ curl -X PUT "http://localhost:9200/_index_template/pfelg" -H 'Content-Type: appl
 | Index name | `pfelk-dhcp*` |
 | Time field | `@timestamp` |
 | Version | 8.0+ |
+
+
+In Grafana: **Dashboards → Import → Upload JSON file**
 
 ## Available Fields
 
