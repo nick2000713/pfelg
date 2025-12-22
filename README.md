@@ -113,7 +113,7 @@ Choose a retention policy or change it:
 **Keep forever (cold storage after 7 days):**
 ```bash
 curl -X PUT "http://localhost:9200/_ilm/policy/pfelk-forever?pretty" \
-    -H 'Content-Type: application/json' -d '
+  -H 'Content-Type: application/json' -d '
 {
   "policy": {
     "phases": {
@@ -127,14 +127,14 @@ curl -X PUT "http://localhost:9200/_ilm/policy/pfelk-forever?pretty" \
         "min_age": "1d",
         "actions": {
           "set_priority": { "priority": 50 },
-          "forcemerge": { "max_num_segments": 1 },
-          "readonly": {}
+          "forcemerge": { "max_num_segments": 1 }
         }
       },
       "cold": {
         "min_age": "7d",
         "actions": {
-          "set_priority": { "priority": 0 }
+          "set_priority": { "priority": 0 },
+          "readonly": {}
         }
       }
     }
@@ -160,7 +160,6 @@ curl -X PUT "http://localhost:9200/_ilm/policy/pfelk-7days?pretty" \
         "actions": {
           "set_priority": { "priority": 50 },
           "forcemerge": { "max_num_segments": 1 },
-          "readonly": {}
         }
       },
       "delete": {
